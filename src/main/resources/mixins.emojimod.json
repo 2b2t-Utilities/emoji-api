@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "me.tigermouthbear.emojimod.mixin",
+  "refmap": "mixins.emojimod.refmap.json",
+  "mixins": [
+    "MixinFontRenderer"
+  ]
+}
