@@ -84,6 +84,7 @@ processResources {
 shadowJar {
     dependencies {
         include(dependency("org.spongepowered:mixin"))
+        include(dependency('org.json:json'))
     }
     exclude "dummyThing"
     exclude "LICENSE.txt"
