@@ -23,57 +23,26 @@ import java.util.Random;
 
 @Mixin(FontRenderer.class)
 public abstract class MixinFontRenderer {
-	@Shadow
-	private boolean randomStyle;
-	@Shadow
-	private boolean boldStyle;
-	@Shadow
-	private boolean strikethroughStyle;
-	@Shadow
-	private boolean underlineStyle;
-	@Shadow
-	private boolean italicStyle;
-	@Shadow
-	private boolean unicodeFlag;
-
-	@Shadow
-	private int textColor;
-
-	@Shadow
-	private float red;
-	@Shadow
-	private float green;
-	@Shadow
-	private float blue;
-	@Shadow
-	private float alpha;
-
-	@Shadow
-	protected float posX;
-	@Shadow
-	protected float posY;
-
-	@Shadow
-	public Random fontRandom;
-
-	@Final
-	@Shadow
-	private int[] colorCode;
-
-	@Shadow
-	protected abstract void setColor(float r, float g, float b, float a);
-
-	@Shadow
-	public abstract int getCharWidth(char character);
-
-	@Shadow
-	protected abstract float renderChar(char ch, boolean italic);
-
-	@Shadow
-	protected abstract void doDraw(float f);
-
-	@Shadow
-	public abstract int getStringWidth(String text);
+	@Shadow private boolean randomStyle;
+	@Shadow private boolean boldStyle;
+	@Shadow private boolean strikethroughStyle;
+	@Shadow private boolean underlineStyle;
+	@Shadow private boolean italicStyle;
+	@Shadow private boolean unicodeFlag;
+	@Shadow private int textColor;
+	@Shadow private float red;
+	@Shadow private float green;
+	@Shadow private float blue;
+	@Shadow private float alpha;
+	@Shadow protected float posX;
+	@Shadow protected float posY;
+	@Shadow public Random fontRandom;
+	@Final @Shadow private int[] colorCode;
+	@Shadow protected abstract void setColor(float r, float g, float b, float a);
+	@Shadow public abstract int getCharWidth(char character);
+	@Shadow protected abstract float renderChar(char ch, boolean italic);
+	@Shadow protected abstract void doDraw(float f);
+	@Shadow public abstract int getStringWidth(String text);
 
 	/**
 	 * @author Tigermouthbear
