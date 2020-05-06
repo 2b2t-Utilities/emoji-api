@@ -1,5 +1,5 @@
 # emoji-mod
-A forgemod that adds emojis to mc chat.
+An API used to add emojis to minecraft
 
 ## Emojis
-Emojis in this mod are downloaded from https://github.com/Tigermouthbear/emoji-mod-resources and can be updated without having to reinstall the mod
+Emojis in this mod are downloaded from https://github.com/2b2t-Utilities/emojis and can be updated without having to reinstall the mod
