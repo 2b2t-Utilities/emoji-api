@@ -1,4 +1,4 @@
-package me.tigermouthbear.emojimod.mixin;
+package me.tigermouthbear.emojimod.impl.mixin;
 
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.spongepowered.asm.launch.MixinBootstrap;
@@ -6,6 +6,11 @@ import org.spongepowered.asm.mixin.MixinEnvironment;
 import org.spongepowered.asm.mixin.Mixins;
 
 import java.util.Map;
+
+/**
+ * @author Tigermouthbear
+ * 5/5/20
+ */
 
 public class MixinLoader implements IFMLLoadingPlugin {
 	public MixinLoader() {

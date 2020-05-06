@@ -1,4 +1,9 @@
-package me.tigermouthbear.emojimod;
+package me.tigermouthbear.emojimod.api;
+
+/**
+ * @author Tigermouthbear
+ * 5/5/20
+ */
 
 public class Emoji {
 	private String name;

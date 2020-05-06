@@ -1,4 +1,4 @@
-package me.tigermouthbear.emojimod;
+package me.tigermouthbear.emojimod.api;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -7,7 +7,6 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
@@ -15,6 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
+/**
+ * @author Tigermouthbear
+ * 5/5/20
+ */
 
 public class Emojis {
 	private static final Minecraft MC = Minecraft.getMinecraft();
@@ -25,6 +29,9 @@ public class Emojis {
 	private static final Map<String, ResourceLocation> EMOJI_MAP = new HashMap<>();
 
 	public static void load() throws IOException {
+		File dir = new File("emoji");
+		if(!dir.exists()) dir.mkdir();
+
 		if(!LOCAL_VERSION.exists()) update_emojis();
 		else {
 			// load version info
@@ -39,7 +46,7 @@ public class Emojis {
 		}
 
 		File[] emojis = new File("emoji").listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".png"));
-		for(File emoji: emojis) addEmoji(emoji);
+		for(File emoji : emojis) addEmoji(emoji);
 	}
 
 	private static void update_emojis() throws IOException {
@@ -61,8 +68,6 @@ public class Emojis {
 			entry = zip.getNextEntry();
 		}
 		zip.close();
-
-		EmojiMod.log.info("Updated local emojis");
 	}
 
 	private static void addEmoji(File file) {

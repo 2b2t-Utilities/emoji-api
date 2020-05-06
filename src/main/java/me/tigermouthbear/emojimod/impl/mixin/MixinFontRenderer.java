@@ -1,19 +1,25 @@
-package me.tigermouthbear.emojimod.mixin;
+package me.tigermouthbear.emojimod.impl.mixin;
 
-import me.tigermouthbear.emojimod.Emoji;
-import me.tigermouthbear.emojimod.EmojiMod;
-import me.tigermouthbear.emojimod.Emojis;
+import me.tigermouthbear.emojimod.api.Emoji;
+import me.tigermouthbear.emojimod.api.Emojis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.GlStateManager;
-import org.apache.commons.lang3.StringUtils;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+
+/**
+ * @author Tigermouthbear
+ * 5/5/20
+ */
 
 @Mixin(FontRenderer.class)
 public abstract class MixinFontRenderer {
@@ -66,9 +72,8 @@ public abstract class MixinFontRenderer {
 	@Shadow
 	protected abstract void doDraw(float f);
 
-	@Shadow public abstract int getStringWidth(String text);
-
-	@Shadow @Final protected int[] charWidth;
+	@Shadow
+	public abstract int getStringWidth(String text);
 
 	/**
 	 * @author Tigermouthbear
@@ -78,18 +83,18 @@ public abstract class MixinFontRenderer {
 		int size = getStringWidth("  ");
 		List<Emoji> emojis = new ArrayList<>();
 
-		for(String possile: text.split(":")) {
+		for(String possile : text.split(":")) {
 			if(Emojis.isEmoji(possile)) emojis.add(new Emoji(possile));
 		}
 
-		for(Emoji emoji: emojis) {
+		for(Emoji emoji : emojis) {
 			if(!shadow) {
 				int index = text.indexOf(":" + emoji.getName() + ":");
 				if(index == -1) continue;
 				int x = getStringWidth(text.substring(0, index));
 
 				Minecraft.getMinecraft().getTextureManager().bindTexture(Emojis.getEmoji(emoji));
-				GlStateManager.color(1, 1, 1, 1);
+				GlStateManager.color(1, 1, 1, alpha);
 				Gui.drawScaledCustomSizeModalRect((int) (posX + x), (int) posY, 0, 0, size, size, size, size, size, size);
 			}
 

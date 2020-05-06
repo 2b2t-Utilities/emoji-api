@@ -34,7 +34,7 @@ minecraft {
 
     //mappings = "snapshot_20170624" These were the mappings provided by the new MDK download
     mappings = project.McpVersion
-    coreMod = "me.tigermouthbear.emojimod.mixin.MixinLoader"
+    coreMod = "me.tigermouthbear.emojimod.impl.mixin.MixinLoader"
     makeObfSourceJar = false
 }
 
@@ -109,7 +109,7 @@ jar {
                 "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
                 "TweakOrder": 0,
                 "FMLCorePluginContainsFMLMod": "true",
-                "FMLCorePlugin": "me.tigermouthbear.emojimod.mixin.MixinLoader",
+                "FMLCorePlugin": "me.tigermouthbear.emojimod.impl.mixin.MixinLoader",
                 "ForceLoadAsMod": "true"
         )
     }
