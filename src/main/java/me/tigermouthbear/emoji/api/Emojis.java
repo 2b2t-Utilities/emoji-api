@@ -1,4 +1,4 @@
-package me.tigermouthbear.emojimod.api;
+package me.tigermouthbear.emoji.api;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
@@ -22,28 +22,30 @@ import java.util.zip.ZipInputStream;
 
 public class Emojis {
 	private static final Minecraft MC = Minecraft.getMinecraft();
-	private static final String VERSION_URL = "https://raw.githubusercontent.com/Tigermouthbear/emoji-mod-resources/master/version.json";
-	private static final String ZIP_URL = "https://github.com/Tigermouthbear/emoji-mod-resources/archive/master.zip";
+	private static final String VERSION_URL = "https://raw.githubusercontent.com/2b2t-Utilities/emojis/master/version.json";
+	private static final String ZIP_URL = "https://github.com/2b2t-Utilities/emojis/archive/master.zip";
 	private static final String FOLDER = "emoji";
 	private static final File LOCAL_VERSION = new File(FOLDER + File.separator + "version.json");
 	private static final Map<String, ResourceLocation> EMOJI_MAP = new HashMap<>();
 
-	public static void load() throws IOException {
+	public static void load() {
 		File dir = new File("emoji");
 		if(!dir.exists()) dir.mkdir();
 
-		if(!LOCAL_VERSION.exists()) update_emojis();
-		else {
-			// load version info
-			JSONObject globalVer = new JSONObject(new JSONTokener(new URL(VERSION_URL).openStream()));
-			JSONObject localVer = new JSONObject(new JSONTokener(new FileInputStream(LOCAL_VERSION)));
-
-			// make sure current version is latest
-			if(!globalVer.has("version")) update_emojis();
+		try {
+			if(!LOCAL_VERSION.exists()) update_emojis();
 			else {
-				if(globalVer.getInt("version") != localVer.getInt("version")) update_emojis();
+				// load version info
+				JSONObject globalVer = new JSONObject(new JSONTokener(new URL(VERSION_URL).openStream()));
+				JSONObject localVer = new JSONObject(new JSONTokener(new FileInputStream(LOCAL_VERSION)));
+
+				// make sure current version is latest
+				if(!globalVer.has("version")) update_emojis();
+				else {
+					if(globalVer.getInt("version") != localVer.getInt("version")) update_emojis();
+				}
 			}
-		}
+		} catch(Exception ignored) {  }
 
 		File[] emojis = new File("emoji").listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".png"));
 		for(File emoji : emojis) addEmoji(emoji);
