@@ -41,8 +41,8 @@ public class Emojis {
             if(!LOCAL_VERSION.exists()) update_emojis();
             else {
                 // load version info
-                JsonObject globalVer = GSON.fromJson(GSON.newJsonReader(new InputStreamReader(new URL(VERSION_URL).openStream())), JsonObject.class);
-                JsonObject localVer = GSON.fromJson(GSON.newJsonReader(new InputStreamReader(new FileInputStream(LOCAL_VERSION))), JsonObject.class);
+                JsonObject globalVer = GSON.fromJson(new InputStreamReader(new URL(VERSION_URL).openStream()), JsonObject.class);
+                JsonObject localVer = GSON.fromJson(new FileReader(LOCAL_VERSION), JsonObject.class);
 
                 // make sure current version is latest
                 if(!globalVer.has("version")) update_emojis();
