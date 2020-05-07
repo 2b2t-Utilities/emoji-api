@@ -6,13 +6,13 @@ package me.tigermouthbear.emoji.api;
  */
 
 public class Emoji {
-	private String name;
+    private String name;
 
-	public Emoji(String name) {
-		this.name = name;
-	}
+    public Emoji(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 }

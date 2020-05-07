@@ -27,11 +27,3 @@ minecraft {
     mappings = "snapshot_20171003"
     makeObfSourceJar = false
 }
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "org.json:json:20190722"
-}
