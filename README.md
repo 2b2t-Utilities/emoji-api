@@ -1,4 +1,4 @@
-# emoji-mod
+# emoji-api
 An API used to add emojis to minecraft
 
 ## Emojis
