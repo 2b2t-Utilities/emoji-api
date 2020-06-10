@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    compile "com.github.Tigermouthbear:SimpleEvents:master-SNAPSHOT"
+    compile "com.github.2b2t-Utilities:emoji-api:master-SNAPSHOT"
 }
 ```
 Last, add the emoji-api to your mixin configs:
