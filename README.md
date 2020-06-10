@@ -7,17 +7,12 @@ An API used to add emojis to minecraft
 Emojis in this mod are downloaded from https://github.com/2b2t-Utilities/emojis and can be updated without having to reinstall the mod
 
 ## Usage
-First, add the dependencies to Gradle:
+First, download the emoji-api-1.0.jar from [here](https://github.com/2b2t-Utilities/emoji-api/releases/tag/v1.0).
+Next, move the jar to a libraries folder in your projects dir. For example: _project_dir_/libs/emoji-api-1.0.jar.
+Then, add this to your Gradle:
 ```
-repositories {
-    maven {
-   	    name = "jitpack.io"
-   		url = "https://jitpack.io"
-   	}
-}
-
 dependencies {
-    compile "com.github.2b2t-Utilities:emoji-api:master-SNAPSHOT"
+    runtime files("libs/emoji-api-1.0.jar")
 }
 ```
 Last, add the emoji-api to your mixin configs:
