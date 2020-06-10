@@ -28,7 +28,11 @@ public class Emojis {
 	private static final File LOCAL_VERSION = new File(FOLDER + File.separator + "version.json");
 	private static final Map<String, ResourceLocation> EMOJI_MAP = new HashMap<>();
 
-	public static void load() {
+	static {
+		load();
+	}
+
+	private static void load() {
 		File dir = new File("emoji");
 		if(!dir.exists()) dir.mkdir();
 

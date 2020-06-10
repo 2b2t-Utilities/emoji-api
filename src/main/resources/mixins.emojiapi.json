@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "dev.tigr.emoji.api.mixin",
+  "refmap": "mixins.emojiapi.refmap.json",
+  "mixins": [
+    "MixinFontRenderer"
+  ]
+}

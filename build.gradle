@@ -5,12 +5,18 @@ buildscript {
             name = "forge"
             url = "http://files.minecraftforge.net/maven"
         }
+        maven {
+            name = "SpongePowered"
+            url = "http://repo.spongepowered.org/maven"
+        }
     }
     dependencies {
         classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+        classpath "org.spongepowered:mixingradle:0.6-SNAPSHOT"
     }
 }
 apply plugin: "net.minecraftforge.gradle.forge"
+apply plugin: "org.spongepowered.mixin"
 
 version = "1.0"
 group = "dev.tigr.emoji.api"
@@ -29,9 +35,33 @@ minecraft {
 }
 
 repositories {
+    maven {
+        name = "spongepowered-repo"
+        url = "http://repo.spongepowered.org/maven/"
+    }
     mavenCentral()
 }
 
 dependencies {
+    compile("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+        exclude module: "launchwrapper"
+        exclude module: "guava"
+        exclude module: "gson"
+        exclude module: "commons-io"
+    }
+
     compile "org.json:json:20190722"
+}
+
+mixin {
+    defaultObfuscationEnv searge
+    add sourceSets.main, 'mixins.emojiapi.refmap.json'
+}
+
+jar {
+    manifest {
+        attributes(
+                "MixinConfigs": "mixins.emojiapi.json"
+        )
+    }
 }
