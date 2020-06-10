@@ -1,4 +1,4 @@
-package me.tigermouthbear.emoji.api;
+package dev.tigr.emoji.api;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;

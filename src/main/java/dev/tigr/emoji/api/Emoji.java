@@ -1,4 +1,4 @@
-package me.tigermouthbear.emoji.api;
+package dev.tigr.emoji.api;
 
 /**
  * @author Tigermouthbear

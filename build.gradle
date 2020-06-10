@@ -13,7 +13,7 @@ buildscript {
 apply plugin: "net.minecraftforge.gradle.forge"
 
 version = "1.0"
-group = "me.tigermouthbear.emoji.api"
+group = "dev.tigr.emoji.api"
 archivesBaseName = "emoji-api"
 
 compileJava {
