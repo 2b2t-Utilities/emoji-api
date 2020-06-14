@@ -1,7 +1,7 @@
-package dev.tigr.emoji.api.mixin;
+package dev.tigr.emojiapi.mixin;
 
-import dev.tigr.emoji.api.Emoji;
-import dev.tigr.emoji.api.Emojis;
+import dev.tigr.emojiapi.Emoji;
+import dev.tigr.emojiapi.Emojis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;

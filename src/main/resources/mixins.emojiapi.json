@@ -4,6 +4,6 @@
   "package": "dev.tigr.emoji.api.mixin",
   "refmap": "mixins.emojiapi.refmap.json",
   "mixins": [
-    "MixinFontRenderer"
+    "dev.tigr.emojiapi.mixin.MixinFontRenderer"
   ]
 }

@@ -19,8 +19,8 @@ apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: "org.spongepowered.mixin"
 
 version = "1.0"
-group = "dev.tigr.emoji.api"
-archivesBaseName = "emoji-api"
+group = "dev.tigr"
+archivesBaseName = "emojiapi"
 
 compileJava {
     sourceCompatibility = targetCompatibility = "1.8"

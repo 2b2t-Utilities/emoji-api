@@ -1,4 +1,4 @@
-package dev.tigr.emoji.api;
+package dev.tigr.emojiapi;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
