@@ -51,8 +51,13 @@ public class Emojis {
 			}
 		} catch(Exception ignored) {  }
 
-		File[] emojis = new File("emoji").listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".png"));
-		for(File emoji : emojis) addEmoji(emoji);
+		File[] emojis = new File(FOLDER).listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".png"));
+		assert emojis != null;
+		for(File emoji: emojis) {
+			try {
+				addEmoji(emoji);
+			} catch(Exception ignored) {  }
+		}
 	}
 
 	private static void update_emojis() throws IOException {
