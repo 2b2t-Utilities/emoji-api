@@ -49,8 +49,6 @@ dependencies {
         exclude module: "gson"
         exclude module: "commons-io"
     }
-
-    compile "org.json:json:20190722"
 }
 
 mixin {

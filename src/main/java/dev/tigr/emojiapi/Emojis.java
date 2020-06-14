@@ -1,10 +1,12 @@
 package dev.tigr.emojiapi;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.util.ResourceLocation;
-import org.json.JSONObject;
-import org.json.JSONTokener;
+import org.apache.commons.compress.utils.Charsets;
+import org.apache.commons.io.IOUtils;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -40,13 +42,13 @@ public class Emojis {
 			if(!LOCAL_VERSION.exists()) update_emojis();
 			else {
 				// load version info
-				JSONObject globalVer = new JSONObject(new JSONTokener(new URL(VERSION_URL).openStream()));
-				JSONObject localVer = new JSONObject(new JSONTokener(new FileInputStream(LOCAL_VERSION)));
+				JsonObject globalVer = read(new URL(VERSION_URL).openStream());
+				JsonObject localVer = read(new FileInputStream(LOCAL_VERSION));
 
 				// make sure current version is latest
 				if(!globalVer.has("version")) update_emojis();
 				else {
-					if(globalVer.getInt("version") != localVer.getInt("version")) update_emojis();
+					if(globalVer.get("version").getAsInt() != localVer.get("version").getAsInt()) update_emojis();
 				}
 			}
 		} catch(Exception ignored) {  }
@@ -58,6 +60,20 @@ public class Emojis {
 				addEmoji(emoji);
 			} catch(Exception ignored) {  }
 		}
+	}
+
+	private static JsonObject read(InputStream stream) {
+		Gson gson = new Gson();
+		JsonObject jsonObject = null;
+
+		try {
+			String json = IOUtils.toString(stream, Charsets.UTF_8);
+			jsonObject = gson.fromJson(json, JsonObject.class);
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+
+		return jsonObject;
 	}
 
 	private static void update_emojis() throws IOException {
