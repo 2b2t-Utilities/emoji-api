@@ -12,6 +12,8 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -53,13 +55,13 @@ public class Emojis {
 			}
 		} catch(Exception ignored) {  }
 
-		File[] emojis = new File(FOLDER).listFiles(file -> file.isFile() && file.getName().toLowerCase().endsWith(".png"));
-		assert emojis != null;
-		for(File emoji: emojis) {
-			try {
-				addEmoji(emoji);
-			} catch(Exception ignored) {  }
-		}
+		try {
+			Files.list(new File(FOLDER).toPath()).filter(path -> path.endsWith(".png")).forEach(path -> {
+				try {
+					addEmoji(path);
+				} catch(Exception ignored) {  }
+			});
+		} catch(IOException e) {  }
 	}
 
 	private static JsonObject read(InputStream stream) {
@@ -97,7 +99,8 @@ public class Emojis {
 		zip.close();
 	}
 
-	private static void addEmoji(File file) {
+	private static void addEmoji(Path path) {
+		File file = path.toFile();
 		DynamicTexture dynamicTexture;
 		try {
 			BufferedImage image = ImageIO.read(file);
